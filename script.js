@@ -48,9 +48,10 @@
 					event.preventDefault();
 				} else {
 					launchStatusH2.innerHTML = "Shuttle is ready for launch.";
+					launchStatusH2.style.color = "green";
+					event.preventDefault();
 				}
-event.preventDefault();
-//				                    <li id="pilotStatus">Pilot Ready</li>
+//event.preventDefault();
 			}		
 		});
 	});
