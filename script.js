@@ -51,9 +51,27 @@
 					launchStatusH2.style.color = "green";
 					event.preventDefault();
 				}
-//event.preventDefault();
 			}		
 		});
+		let json = [];
+		fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+			response.json().then(function(json) {
+				const destination = document.getElementById("missionTarget");
+				let index = 3;
+				destination.innerHTML = `
+					<h2>Mission Destination</h2>
+					<ol>
+					   <li>Name: ${json[index].name}</li>
+					   <li>Diameter: ${json[index].diameter}</li>
+					   <li>Star: ${json[index].star}</li>
+					   <li>Distance from Earth: ${json[index].distance}</li>
+					   <li>Number of Moons: ${json[index].moons}</li>
+					</ol>
+					<img src="${json[index].image}">
+				`; // destination.innerHTML = ...
+				index = (index + 1) % json.length;
+			}); // response.json() ... function(json) {
+		}); // fetch("https ... function(response) {
 	});
   
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
